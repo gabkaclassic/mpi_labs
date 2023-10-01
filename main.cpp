@@ -1,9 +1,7 @@
 #include <iostream>
 #include <mpi.h>
-#include <iostream>
 #include <cmath>
-
-#define N 10
+#include <sstream>
 
 typedef struct {
     double real;
@@ -59,6 +57,9 @@ int main(int argc, char** argv) {
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &size);
+    std::stringstream s1(argv[1]);
+    int N;
+    s1 >> N;
 
     // Initialize matrices
     matrix A, B, C, C_seq;
